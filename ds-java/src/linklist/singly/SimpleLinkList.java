@@ -25,9 +25,18 @@ public class SimpleLinkList {
 //		second.next = third;
 //		System.out.println(linkList.head.next.next.value);
 		
+//		linkList.push(3);
+//		linkList.append(5);
+//		linkList.insertAfter(linkList.head, 4);
+//		linkList.printList();
+		
+		linkList.push(4);
 		linkList.push(3);
-		linkList.append(5);
-		linkList.insertAfter(linkList.head, 4);
+		linkList.push(2);
+		linkList.push(1);
+		linkList.printList();
+		linkList.deleteNode(3);
+		System.out.println();
 		linkList.printList();
 	}
 	
@@ -67,5 +76,24 @@ public class SimpleLinkList {
 			last = head.next;
 		}
 		last.next = newNode;
+	}
+	
+	public void deleteNode(int key) {
+		
+		Node temp = head, prev = null;
+		
+		if(temp != null && temp.value == key) {
+			head = temp.next;
+			return;
+		}
+		
+		while(temp != null && temp.value != key) {
+			prev = temp;
+			temp = temp.next;
+		}
+		
+		if(temp == null) return;
+		
+		prev.next = temp.next;
 	}
 }

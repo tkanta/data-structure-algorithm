@@ -35,11 +35,37 @@ class LinkedList:
             print(tNode.data, end=" ")
             tNode = tNode.next
 
+    def deleteNode(self, key):
+        temp = self.head
+
+        if(temp is not None and temp.data == key):
+            self.head = temp.next
+            temp = None
+            return
+
+        while(temp is not None and temp.data != key):
+            prev = temp
+            temp = temp.next
+
+        if(temp == None):
+            return
+
+        prev.next = temp.next
+        temp = None
+
+
 if __name__ == '__main__':
     list = LinkedList()
-    list.push(3)
-    list.append(5)
-    list.insertAfter(list.head, 4)
+    # list.push(3)
+    # list.append(5)
+    # list.insertAfter(list.head, 4)
+    # list.printList()
+
+    # Check delete
+    list.append(1)
+    list.append(2)
+    list.append(3)
+    list.deleteNode(2)
     list.printList()
 
 
