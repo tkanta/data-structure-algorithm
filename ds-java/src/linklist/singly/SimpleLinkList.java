@@ -35,7 +35,8 @@ public class SimpleLinkList {
 		linkList.push(2);
 		linkList.push(1);
 		linkList.printList();
-		linkList.deleteNode(3);
+		//linkList.deleteNode(3);
+		linkList.deleteNodeAtPosition(4);
 		System.out.println();
 		linkList.printList();
 	}
@@ -95,5 +96,29 @@ public class SimpleLinkList {
 		if(temp == null) return;
 		
 		prev.next = temp.next;
+	}
+	public void deleteNodeAtPosition(int pos) {
+		
+		if(head == null) return;
+				
+		Node temp = head;
+		
+		if(pos == 0) {
+			head = temp.next;
+			return;
+		}
+		
+		int index = 0;
+		while(index < pos-1) {
+			temp = temp.next;
+			index++;
+		}
+		
+		if(temp == null || temp.next == null) {
+			return;
+		}
+		
+		temp.next = temp.next.next;
+		
 	}
 }
