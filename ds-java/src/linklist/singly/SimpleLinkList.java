@@ -36,9 +36,11 @@ public class SimpleLinkList {
 		linkList.push(1);
 		linkList.printList();
 		//linkList.deleteNode(3);
-		linkList.deleteNodeAtPosition(4);
+		linkList.deleteNodeAtPosition(3);
 		System.out.println();
 		linkList.printList();
+		System.out.println();
+		System.out.println("count : "+linkList.getCount());
 	}
 	
 	public void printList() {
@@ -119,6 +121,18 @@ public class SimpleLinkList {
 		}
 		
 		temp.next = temp.next.next;
+		
+	}
+	
+	public int getCount() {
+		Node temp = head;
+		
+		int count = 0;
+		while (temp != null) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
 		
 	}
 }

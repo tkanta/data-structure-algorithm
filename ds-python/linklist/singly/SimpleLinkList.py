@@ -74,6 +74,13 @@ class LinkedList:
 
         temp.next = temp.next.next
 
+    def getCount(self):
+        temp = self.head
+        count = 0
+        while(temp):
+            count+=1;
+            temp = temp.next
+        return count
 
 
 
@@ -93,6 +100,8 @@ if __name__ == '__main__':
     print('\n')
     #list.deleteNode(2)
     list.printList()
+    print('\n')
+    print("Count : ", list.getCount())
 
 
 
