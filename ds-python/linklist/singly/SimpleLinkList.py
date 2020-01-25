@@ -82,6 +82,26 @@ class LinkedList:
             temp = temp.next
         return count
 
+    def printNthFromLast(self, n):
+        temp = self.head
+        count = 0
+        while(temp):
+            temp = temp.next
+            count+=1
+
+        if(n > count):
+            return
+
+        temp = self.head
+        # i = 1
+        # while(i<count-n+1):
+        #     temp = temp.next
+        #     i+=1
+        for i in range(1, count-n+1):
+            temp = temp.next
+            i+=1
+
+        print(temp.data)
 
 
 if __name__ == '__main__':
@@ -95,14 +115,17 @@ if __name__ == '__main__':
     list.append(1)
     list.append(2)
     list.append(3)
-    list.printList()
-    list.deleteNodeAtPosition(0)
+    list.append(4)
+    #list.printList()
+    #list.deleteNodeAtPosition(0)
     print('\n')
     #list.deleteNode(2)
-    list.printList()
-    print('\n')
-    print("Count : ", list.getCount())
+    #list.printList()
+    #print('\n')
+    #print("Count : ", list.getCount())
 
+    #print nth node from last
+    list.printNthFromLast(1)
 
 
 

@@ -36,11 +36,14 @@ public class SimpleLinkList {
 		linkList.push(1);
 		linkList.printList();
 		//linkList.deleteNode(3);
-		linkList.deleteNodeAtPosition(3);
-		System.out.println();
-		linkList.printList();
-		System.out.println();
-		System.out.println("count : "+linkList.getCount());
+		//linkList.deleteNodeAtPosition(3);
+		//System.out.println();
+		//linkList.printList();
+		//System.out.println();
+		//System.out.println("count : "+linkList.getCount());
+		
+		//Print nth from last
+		linkList.printNthFromLast(2);
 	}
 	
 	public void printList() {
@@ -134,5 +137,24 @@ public class SimpleLinkList {
 		}
 		return count;
 		
+	}
+	
+	public void printNthFromLast(int nth) {
+		Node temp = head;
+		
+		int len = 0;
+		while(temp != null) {
+			temp = temp.next;
+			len++;
+		}
+		
+		if(nth > len ) return ;
+		
+		temp = head;
+		
+		for(int i = 1; i < len-nth+1 ; i++) {
+			temp = temp.next;
+		}
+		System.out.println("\n"+ nth +"th from last : "+temp.value);
 	}
 }
