@@ -30,11 +30,12 @@ public class SimpleLinkList {
 //		linkList.insertAfter(linkList.head, 4);
 //		linkList.printList();
 		
-		linkList.push(4);
-		linkList.push(3);
-		linkList.push(2);
-		linkList.push(1);
-		linkList.printList();
+		//linkList.push(5);
+//		linkList.push(4);
+//		linkList.push(3);
+//		linkList.push(2);
+//		linkList.push(1);
+//		linkList.printList();
 		//linkList.deleteNode(3);
 		//linkList.deleteNodeAtPosition(3);
 		//System.out.println();
@@ -43,7 +44,22 @@ public class SimpleLinkList {
 		//System.out.println("count : "+linkList.getCount());
 		
 		//Print nth from last
-		linkList.printNthFromLast(2);
+		//linkList.printNthFromLast(2);
+		
+		//-------- Print Middle --------
+		//linkList.printMiddleWithOddIndex();
+		//linkList.printMiddleWithDoubleIncrement();
+		
+		//--------- detect loop ---------
+		Node head = new Node(1); 
+        head.next = new Node(2); 
+        head.next.next = new Node(3); 
+        head.next.next.next = new Node(4); 
+        head.next.next.next.next = new Node(5); 
+        // Create a loop for testing(5 is pointing to 3) / 
+        head.next.next.next.next.next = head.next.next.next;
+		boolean isLoop = linkList.detectLoop(head);
+		System.out.println("\n"+isLoop);
 	}
 	
 	public void printList() {
@@ -156,5 +172,56 @@ public class SimpleLinkList {
 			temp = temp.next;
 		}
 		System.out.println("\n"+ nth +"th from last : "+temp.value);
+	}
+	
+	//================ print Middle Element ================
+	
+	// increment when odd index to find the middle number
+	public void printMiddleWithOddIndex() {
+		Node mid = head, temp = head;
+		int count = 0;
+		while(temp != null) {
+			if(count % 2 != 0) {
+				mid = mid.next;
+			}
+			temp = temp.next;
+			count++;
+		}
+		System.out.println("\nMid Value ---> "+mid.value);
+	}
+	
+	public void printMiddleWithDoubleIncrement() {
+		Node mid = head, fast = head;
+		while(fast != null && fast.next != null) {
+			fast = fast.next.next;
+			mid = mid.next;
+		}
+		System.out.println("\nMid Value ---> "+mid.value);
+	}
+	
+	
+	//-------------  detect loop --------------
+	
+	public boolean detectLoop(Node head) {
+		Node fast = head, slow = head;
+		while(slow != null && fast != null && fast.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+			if(slow == fast) {
+				System.out.println(countLoopLen(slow));
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int countLoopLen(Node n) {
+		int count = 0;
+		Node temp = n;
+		while(temp.next != n) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
 	}
 }
