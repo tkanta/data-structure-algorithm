@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -103,6 +105,25 @@ class LinkedList:
 
         print(temp.data)
 
+    def checkPalindrom(self):
+        temp = self.head
+        stack = deque() #https://www.geeksforgeeks.org/stack-in-python/
+
+        while(temp):
+            stack.append(temp.data)
+            temp = temp.next
+
+        temp = self.head
+        while(temp):
+            if(temp.data != stack.pop()):
+                return False
+            temp = temp.next
+
+        return True
+
+
+
+
 
 if __name__ == '__main__':
     list = LinkedList()
@@ -112,10 +133,10 @@ if __name__ == '__main__':
     # list.printList()
 
     # Check delete
-    list.append(1)
-    list.append(2)
-    list.append(3)
-    list.append(4)
+    # list.append(1)
+    # list.append(2)
+    # list.append(3)
+    # list.append(4)
     #list.printList()
     #list.deleteNodeAtPosition(0)
     print('\n')
@@ -125,7 +146,15 @@ if __name__ == '__main__':
     #print("Count : ", list.getCount())
 
     #print nth node from last
-    list.printNthFromLast(1)
+    #list.printNthFromLast(1)
+
+    #---------- palindrome ---------------
+    list.append(1)
+    list.append(2)
+    list.append(1)
+    list.append(2)
+    list.append(1)
+    print(list.checkPalindrom())
 
 
 

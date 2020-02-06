@@ -1,5 +1,7 @@
 package linklist.singly;
 
+import java.util.Stack;
+
 public class SimpleLinkList {
 	
 	static class Node{
@@ -51,15 +53,23 @@ public class SimpleLinkList {
 		//linkList.printMiddleWithDoubleIncrement();
 		
 		//--------- detect loop ---------
-		Node head = new Node(1); 
-        head.next = new Node(2); 
-        head.next.next = new Node(3); 
-        head.next.next.next = new Node(4); 
-        head.next.next.next.next = new Node(5); 
-        // Create a loop for testing(5 is pointing to 3) / 
-        head.next.next.next.next.next = head.next.next.next;
-		boolean isLoop = linkList.detectLoop(head);
-		System.out.println("\n"+isLoop);
+//		Node head = new Node(1); 
+//        head.next = new Node(2); 
+//        head.next.next = new Node(3); 
+//        head.next.next.next = new Node(4); 
+//        head.next.next.next.next = new Node(5); 
+//        // Create a loop for testing(5 is pointing to 3) / 
+//        head.next.next.next.next.next = head.next.next.next;
+//		boolean isLoop = linkList.detectLoop(head);
+//		System.out.println("\n"+isLoop);
+		
+		//----------- check palindrome --------
+		linkList.push(4);
+		linkList.push(2);
+		linkList.push(1);
+		linkList.push(2);
+		linkList.push(5);
+		System.out.println(linkList.checkPalindrome());
 	}
 	
 	public void printList() {
@@ -224,4 +234,28 @@ public class SimpleLinkList {
 		}
 		return count;
 	}
+	
+	// ------------- check palindrome ------------
+	
+	public  boolean checkPalindrome() {
+		Stack<Integer> stack = new Stack<>();
+		
+		Node temp = head;
+		if(temp == null) return false;
+		
+		while(temp != null) {
+			stack.push(temp.value);
+			temp = temp.next;
+		}
+		
+		temp = head;
+		while(temp != null) {
+			if(temp.value != stack.pop()) {
+				return false;
+			}
+			temp = temp.next;
+		}
+		return true;
+	}
+	
 }
