@@ -122,6 +122,21 @@ class LinkedList:
         return True
 
 
+    def removeDuplicates(self):
+        current = self.head
+        prev = None
+
+        uniqueSet = set()
+
+        while(current):
+            value = current.data
+            if(value in uniqueSet):
+                prev.next = current.next
+            else:
+                uniqueSet.add(value)
+                prev = current
+            current = current.next
+
 
 
 
@@ -139,7 +154,7 @@ if __name__ == '__main__':
     # list.append(4)
     #list.printList()
     #list.deleteNodeAtPosition(0)
-    print('\n')
+    #print('\n')
     #list.deleteNode(2)
     #list.printList()
     #print('\n')
@@ -149,12 +164,23 @@ if __name__ == '__main__':
     #list.printNthFromLast(1)
 
     #---------- palindrome ---------------
+    # list.append(1)
+    # list.append(2)
+    # list.append(1)
+    # list.append(2)
+    # list.append(1)
+    # print(list.checkPalindrom())
+    #print(list.printList())
+
+    #------- remove duplicates --------------
     list.append(1)
     list.append(2)
-    list.append(1)
-    list.append(2)
-    list.append(1)
-    print(list.checkPalindrom())
+    list.append(3)
+    list.append(4)
+    list.append(5)
+    print(list.printList())
+    list.removeDuplicates()
+    print(list.printList())
 
 
 

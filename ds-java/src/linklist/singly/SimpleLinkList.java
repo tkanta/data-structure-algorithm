@@ -1,5 +1,6 @@
 package linklist.singly;
 
+import java.util.HashSet;
 import java.util.Stack;
 
 public class SimpleLinkList {
@@ -64,12 +65,23 @@ public class SimpleLinkList {
 //		System.out.println("\n"+isLoop);
 		
 		//----------- check palindrome --------
+//		linkList.push(4);
+//		linkList.push(2);
+//		linkList.push(1);
+//		linkList.push(2);
+//		linkList.push(5);
+//		System.out.println(linkList.checkPalindrome());
+		
+		//------------ remove duplicates ------------
 		linkList.push(4);
 		linkList.push(2);
 		linkList.push(1);
 		linkList.push(2);
 		linkList.push(5);
-		System.out.println(linkList.checkPalindrome());
+		linkList.printList();
+		linkList.removeDuplicates();
+		System.out.println();
+		linkList.printList();
 	}
 	
 	public void printList() {
@@ -256,6 +268,26 @@ public class SimpleLinkList {
 			temp = temp.next;
 		}
 		return true;
+	}
+
+	//---------------- remove duplicates -------------------'
+	
+	public void removeDuplicates() {
+		HashSet<Integer> uniqueSet = new HashSet<>();
+		Node current = head;
+		Node prev = null;
+		
+		while (current != null) {
+			int value = current.value;
+
+			if(uniqueSet.contains(value)) {
+				prev.next = current.next;
+			}else {
+				uniqueSet.add(value);
+				prev = current;
+			}
+			current = current.next;
+		}
 	}
 	
 }
