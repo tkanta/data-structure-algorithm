@@ -73,13 +73,24 @@ public class SimpleLinkList {
 //		System.out.println(linkList.checkPalindrome());
 		
 		//------------ remove duplicates ------------
+//		linkList.push(4);
+//		linkList.push(2);
+//		linkList.push(1);
+//		linkList.push(2);
+//		linkList.push(5);
+//		linkList.printList();
+//		linkList.removeDuplicates();
+//		System.out.println();
+//		linkList.printList();
+		
+		//-------------- swap Nodes ----------------
 		linkList.push(4);
 		linkList.push(2);
 		linkList.push(1);
 		linkList.push(2);
 		linkList.push(5);
 		linkList.printList();
-		linkList.removeDuplicates();
+		linkList.swapNodes(1, 2);;
 		System.out.println();
 		linkList.printList();
 	}
@@ -290,4 +301,43 @@ public class SimpleLinkList {
 		}
 	}
 	
+	//-------------- Swapping nodes without swapping values -------------
+	
+	public void swapNodes(int src, int dest) {
+		
+		if(src == dest) return;
+		
+		//search for source and keep track of previous and current
+		Node prevX = null, currX = head;
+		while(currX != null && currX.value != src) {
+			prevX = currX;
+			currX = currX.next;
+		}
+		
+		//search for destination and keep track of previous and current
+		Node prevY = null, currY = head;
+		while(currY != null && currY.value != dest) {
+			prevY = currY;
+			currY = currY.next;
+		}
+		
+		if(currX==null || currY ==null) return;
+		
+		if(prevX != null) {
+			prevX.next = currY;
+		}else {
+			head = currY;
+		}
+		
+		if(prevY != null) {
+			prevY.next = currX;
+		}else {
+			head = currX;
+		}
+		
+		Node temp = currX.next;
+		currX.next = currY.next;
+		currY.next = temp;
+				
+	}
 }
