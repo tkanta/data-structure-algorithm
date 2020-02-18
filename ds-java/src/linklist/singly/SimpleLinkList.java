@@ -84,14 +84,25 @@ public class SimpleLinkList {
 //		linkList.printList();
 		
 		//-------------- swap Nodes ----------------
+//		linkList.push(4);
+//		linkList.push(2);
+//		linkList.push(1);
+//		linkList.push(2);
+//		linkList.push(5);
+//		linkList.printList();
+//		linkList.swapNodes(1, 2);;
+//		System.out.println();
+//		linkList.printList();
+		
+		//--------------- pair wise swap -----------------
+		linkList.push(5);
 		linkList.push(4);
+		linkList.push(3);
 		linkList.push(2);
 		linkList.push(1);
-		linkList.push(2);
-		linkList.push(5);
 		linkList.printList();
-		linkList.swapNodes(1, 2);;
-		System.out.println();
+		linkList.pairSwap();
+		System.out.println("");
 		linkList.printList();
 	}
 	
@@ -339,5 +350,19 @@ public class SimpleLinkList {
 		currX.next = currY.next;
 		currY.next = temp;
 				
+	}
+	
+	//============== pair wise swap =================
+	
+	public void pairSwap() {
+		Node curr = head;
+		
+		while(curr != null && curr.next != null) {
+			int p1 = curr.value;
+			curr.value = curr.next.value;
+			curr.next.value = p1;
+			curr = curr.next.next;
+			
+		}
 	}
 }
