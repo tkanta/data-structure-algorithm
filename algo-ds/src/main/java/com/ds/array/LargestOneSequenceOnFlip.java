@@ -2,13 +2,16 @@ package com.ds.array;
 
 /**
  * Find longest sequence of 1's with one flip
- * @author tarin
+ * @author tarini
  *
  */
 public class LargestOneSequenceOnFlip {
 
 	private static int[] arrInt = {1,1,1,0,1,1,1,0,1,1,1,1,1};
 	
+	//Take two variables that will hold the count of 1's and 0's. maxSeq that will hold max sequence of 1's.
+	// when '0' is encountered set isZero  and check for maxSequence of 1's (x+y+1) by verifying x>0 AND y>0. 
+	// Worst case = O(n)
 	public static void main(String[] args) {
 		
 		int x = 0;
@@ -30,7 +33,7 @@ public class LargestOneSequenceOnFlip {
 				}
 			}
 			
-			if(arrInt[i] == 0) {
+			if(arrInt[i] == 0) { 
 				isZero = true;
 				if(i == arrInt.length-1) {
 					maxSeq = x+y+1;
