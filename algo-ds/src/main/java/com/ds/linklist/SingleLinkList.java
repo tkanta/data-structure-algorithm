@@ -26,11 +26,21 @@ public class SingleLinkList {
 		}
 	}
 	
+	/**
+	 * Delete node from end of Link List
+	 * @param kth
+	 * @throws Exception
+	 */
 	public void deleteKthNode(int kth) throws Exception{
+		
+		if(kth <= 0) {
+			throw new Exception("argument should be >= 0");
+		}
 		LLNode slow = head;
 		LLNode fast = head;
 		int move = kth;
 		
+		//move fast pointer to kth location
 		while(move > 0) {
 			try {
 				fast = fast.next;
@@ -40,13 +50,19 @@ public class SingleLinkList {
 			move--;
 		}
 		
-		while(null != fast.next) {
+		//move fast and slow, incrementally
+		while(fast != null && null != fast.next) {
 			slow = slow.next;
 			fast = fast.next;
 		}
 		
-		slow.next = slow.next.next;
-		
+		//removing the element where kth == sizeof(linkList)
+		if(slow == head && fast == null) {
+			head = slow.next;
+		}else {
+			//removing intermediate element
+			slow.next = slow.next.next;
+		}
 		
 	}
 }
