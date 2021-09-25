@@ -1,4 +1,4 @@
-package linklist.singly;
+package com.ds.linklist;
 
 import java.util.HashSet;
 import java.util.Stack;
