@@ -1,4 +1,4 @@
-package com.hackerrank.interviewPrep;
+package com.hackerrank.interview.warmup;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

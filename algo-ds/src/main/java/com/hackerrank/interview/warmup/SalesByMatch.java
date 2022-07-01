@@ -1,4 +1,4 @@
-package com.hackerrank.interviewPrep;
+package com.hackerrank.interview.warmup;
 
 import java.io.*;
 import java.math.*;
